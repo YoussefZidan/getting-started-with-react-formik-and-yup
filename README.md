@@ -419,10 +419,11 @@ const LoginForm = () => {
   );
 };
 export default LoginForm;
-
 ```
+
 ### Cusotom Validation Messeges
-You can pass a custom validation message on each filed as a string argument of the yup validation function
+
+You can pass a custom validation message on each field as a string argument of the yup validation function.
 
 ```jsx
 import React from "react";
@@ -441,7 +442,10 @@ const LoginForm = () => {
     },
     onSubmit: (values) => console.log(JSON.stringify(values, null, 4)),
     validationSchema: yup.object({
-      email: yup.string().email("Please enter a valid email address").required("Email field is required"),
+      email: yup
+        .string()
+        .email("Please enter a valid email address")
+        .required("Email field is required"),
       password: yup.string().required("Password field is required"),
     }),
   });
@@ -496,7 +500,6 @@ const LoginForm = () => {
   );
 };
 export default LoginForm;
-
 ```
 
 ### Code Refactor
@@ -535,8 +538,11 @@ const LoginForm = () => {
   };
   const onSubmit = (values) => console.log(JSON.stringify(values, null, 4));
   const validationSchema = yup.object({
-    email: yup.string().email().required(),
-    password: yup.string().required(),
+    email: yup
+      .string()
+      .email("Please enter a valid email address")
+      .required("Email field is required"),
+    password: yup.string().required("Password field is required"),
   });
 
   const formik = useFormik({
