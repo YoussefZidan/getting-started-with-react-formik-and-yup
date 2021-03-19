@@ -268,7 +268,7 @@ export default LoginForm;
 
 ### Displaying Error Messages
 
-- Create a `<div>` tag and check form `formik.errors[name]` to display the error message beneathe each element that has a validation.
+- Create a `<div>` tag and check for `formik.errors[name]` to display the error message beneathe each element that has a validation.
 
 ```jsx
 import React from "react";
