@@ -421,7 +421,7 @@ const LoginForm = () => {
 export default LoginForm;
 ```
 
-### Cusotom Validation Messeges
+### Custom Validation Messeges
 
 You can pass a custom validation message on each field as a string argument of the yup validation function.
 
