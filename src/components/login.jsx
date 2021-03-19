@@ -1,5 +1,5 @@
 import React from "react";
-import { useFormik } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
 
 /**
@@ -17,54 +17,83 @@ const LoginForm = () => {
     password: yup.string().required(),
   });
 
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validationSchema,
-  });
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div style={{ padding: 20 }}>
-        <label htmlFor="email" style={{ display: "block" }}>
-          email
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          {...formik.getFieldProps("email")}
-        />
-        {formik.touched.email && formik.errors.email && (
-          <div style={{ color: "red" }}>{formik.errors.email}</div>
-        )}
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
+      {(formik) => {
+        return (
+          <Form>
+            <div style={{ padding: 20 }}>
+              <Field name="email">
+                {(formikField) => {
+                  return (
+                    <>
+                      <label htmlFor="email" style={{ display: "block" }}>
+                        email
+                      </label>
+                      <input type="email" id="email" {...formikField.field} />
+                      {formik.touched.email && formik.errors.email && (
+                        <div style={{ color: "red" }}>
+                          {formik.errors.email}
+                        </div>
+                      )}
+                      <pre>{JSON.stringify(formikField, null, 4)}</pre>
+                    </>
+                  );
+                }}
+              </Field>
 
-        <label htmlFor="password" style={{ display: "block" }}>
-          password
-        </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          {...formik.getFieldProps("password")}
-        />
-        {formik.touched.password && formik.errors.password && (
-          <div style={{ color: "red" }}>{formik.errors.password}</div>
-        )}
+              <Field name="password">
+                {(formikField) => {
+                  return (
+                    <>
+                      <label htmlFor="password" style={{ display: "block" }}>
+                        password
+                      </label>
+                      <input
+                        type="password"
+                        id="password"
+                        {...formikField.field}
+                      />
+                      {formik.touched.password && formik.errors.password && (
+                        <div style={{ color: "red" }}>
+                          {formik.errors.password}
+                        </div>
+                      )}
+                      <pre>{JSON.stringify(formikField, null, 4)}</pre>
+                    </>
+                  );
+                }}
+              </Field>
 
-        <label htmlFor="rememberMe" style={{ display: "block" }}>
-          remember me
-        </label>
-        <input
-          type="checkbox"
-          name="rememberMe"
-          id="rememberMe"
-          {...formik.getFieldProps("rememberMe")}
-        />
+              <Field name="rememberMe">
+                {(formikField) => {
+                  return (
+                    <>
+                      <label htmlFor="rememberMe" style={{ display: "block" }}>
+                        remember me
+                      </label>
+                      <input
+                        type="checkbox"
+                        id="rememberMe"
+                        {...formikField.field}
+                      />
+                      <pre>{JSON.stringify(formikField, null, 4)}</pre>
+                    </>
+                  );
+                }}
+              </Field>
 
-        <button style={{ display: "block" }}>submit</button>
-      </div>
-      <pre>{JSON.stringify(formik, null, 4)}</pre>
-    </form>
+              <button style={{ display: "block" }}>submit</button>
+            </div>
+            <pre>{JSON.stringify(formik, null, 4)}</pre>
+          </Form>
+        );
+      }}
+    </Formik>
   );
 };
 export default LoginForm;
