@@ -13,8 +13,11 @@ const LoginForm = () => {
   };
   const onSubmit = (values) => console.log(JSON.stringify(values, null, 4));
   const validationSchema = yup.object({
-    email: yup.string().email().required(),
-    password: yup.string().required(),
+    email: yup
+      .string()
+      .email("Please enter a valid email address")
+      .required("Email field is required"),
+    password: yup.string().required("Password field is required"),
   });
 
   const formik = useFormik({
