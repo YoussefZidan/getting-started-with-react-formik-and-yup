@@ -1,5 +1,4 @@
-# Table of Contents
-- [Table of Contents](#table-of-contents)
+# Table of Contents <!-- omit in toc -->
 - [What is Formik?](#what-is-formik)
 - [Installation](#installation)
 - [Create Login Form](#create-login-form)
