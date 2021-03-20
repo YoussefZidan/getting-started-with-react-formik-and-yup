@@ -13,6 +13,7 @@
 # What is Formik?
 
 [Formik](https://formik.org/) is a library that helps developers do deal with Forms in React and React Native.
+
 As developers we need to:
 
 - Handle form data
