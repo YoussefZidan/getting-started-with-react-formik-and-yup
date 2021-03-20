@@ -1,6 +1,6 @@
 ## What is Formik?
 
-Formik is a library that helps developers do deal with Forms in React and React Native.
+[Formik](https://formik.org/) is a library that helps developers do deal with Forms in React and React Native.
 As developers we need to:
 
 - Handle form data
@@ -190,7 +190,7 @@ export default LoginForm;
 
 ### Handling Form Validation with Yup
 
-- Install Yup
+- Install [Yup](https://github.com/jquense/yup)
 
 ```
 npm install yup --save
