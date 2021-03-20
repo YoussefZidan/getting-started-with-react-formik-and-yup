@@ -1,4 +1,17 @@
-## What is Formik?
+# Table of Contents
+- [Table of Contents](#table-of-contents)
+- [What is Formik?](#what-is-formik)
+- [Installation](#installation)
+- [Create Login Form](#create-login-form)
+  - [Injecting Formik](#injecting-formik)
+  - [Handling Form Submission](#handling-form-submission)
+  - [Handling Form Validation with Yup](#handling-form-validation-with-yup)
+  - [Displaying Error Messages](#displaying-error-messages)
+  - [Displaying Error Messages On Visited Fields](#displaying-error-messages-on-visited-fields)
+  - [Custom Validation Messeges](#custom-validation-messeges)
+  - [Code Refactor](#code-refactor)
+
+# What is Formik?
 
 [Formik](https://formik.org/) is a library that helps developers do deal with Forms in React and React Native.
 As developers we need to:
@@ -10,13 +23,13 @@ As developers we need to:
 
 With Formik, we can do all that in an easy, scalable, and performant way.
 
-## Installation
+# Installation
 
 ```
 npm i --save formik
 ```
 
-## Starting Simple
+# Create Login Form
 
 Creating a Login Form with:
 
@@ -54,7 +67,7 @@ const LoginForm = () => {
 export default LoginForm;
 ```
 
-### Injecting Formik
+## Injecting Formik
 
 - Import `useFormik` hook and add `initialValues` property with each `input` name.
 - Add a `name` attritbute to each `input` element corresponding to `initialValues` key names.
@@ -122,7 +135,7 @@ const LoginForm = () => {
 export default LoginForm;
 ```
 
-### Handling Form Submission
+## Handling Form Submission
 
 - Add `formik.handleSubmit` to `onSubmit` attribute on the `form` element.
 - Add `onSubmit` as a second property on the object inside `useFormik` hook.
@@ -188,7 +201,7 @@ const LoginForm = () => {
 export default LoginForm;
 ```
 
-### Handling Form Validation with Yup
+## Handling Form Validation with Yup
 
 - Install [Yup](https://github.com/jquense/yup)
 
@@ -266,7 +279,7 @@ const LoginForm = () => {
 export default LoginForm;
 ```
 
-### Displaying Error Messages
+## Displaying Error Messages
 
 - Create a `<div>` tag and check for `formik.errors[name]` to display the error message beneathe each element that has a validation.
 
@@ -341,7 +354,7 @@ const LoginForm = () => {
 export default LoginForm;
 ```
 
-### Displaying Error Messages On Visited Fields
+## Displaying Error Messages On Visited Fields
 
 - Add `formik.handleBlur` with `onBlur` attribute with all `input` elements.
 - Visit each `input` element and see the `touched` object inside the printed `formik` object.
@@ -421,7 +434,7 @@ const LoginForm = () => {
 export default LoginForm;
 ```
 
-### Custom Validation Messeges
+## Custom Validation Messeges
 
 You can pass a custom validation message on each field as a string argument of the yup validation function.
 
@@ -502,7 +515,7 @@ const LoginForm = () => {
 export default LoginForm;
 ```
 
-### Code Refactor
+## Code Refactor
 
 Let us make our code more organized and decrease the lines of code by doing the following:
 
