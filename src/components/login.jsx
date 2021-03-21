@@ -9,7 +9,7 @@ const LoginForm = () => {
   const initialValues = {
     email: "",
     password: "",
-    rememberMe: false,
+    rememberMe: true,
   };
   const onSubmit = (values) => console.log(JSON.stringify(values, null, 4));
   const validationSchema = yup.object({
@@ -61,6 +61,7 @@ const LoginForm = () => {
           type="checkbox"
           name="rememberMe"
           id="rememberMe"
+          defaultChecked={formik.values.rememberMe}
           {...formik.getFieldProps("rememberMe")}
         />
 

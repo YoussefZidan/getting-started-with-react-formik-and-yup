@@ -76,8 +76,9 @@ export default LoginForm;
 - Import `useFormik` hook and add `initialValues` property with each `input` name.
 - Add a `name` attritbute to each `input` element corresponding to `initialValues` key names.
 - Add `formik.values[name]` to `value` attribute on each `input` element.
+  - For checkboxes add `defaultChecked={formik.values[name]}` for initial value.
 - Add `formik.handleChange` to `onChange` attribute on each `input` element.
-- print the `formik` object inside `<pre>` tag.
+- Print the `formik` object inside `<pre>` tag.
 - Fill all `input` elements and see the changes on `formik` object.
 
 ```jsx
@@ -128,6 +129,7 @@ const LoginForm = () => {
           name="rememberMe"
           id="rememberMe"
           onChange={formik.handleChange}
+          defaultChecked={formik.values.rememberMe}
         />
 
         <button style={{ display: "block" }}>submit</button>
@@ -194,6 +196,7 @@ const LoginForm = () => {
           name="rememberMe"
           id="rememberMe"
           onChange={formik.handleChange}
+          defaultChecked={formik.values.rememberMe}
         />
 
         <button style={{ display: "block" }}>submit</button>
@@ -272,6 +275,7 @@ const LoginForm = () => {
           name="rememberMe"
           id="rememberMe"
           onChange={formik.handleChange}
+          defaultChecked={formik.values.rememberMe}
         />
 
         <button style={{ display: "block" }}>submit</button>
@@ -347,6 +351,7 @@ const LoginForm = () => {
           name="rememberMe"
           id="rememberMe"
           onChange={formik.handleChange}
+          defaultChecked={formik.values.rememberMe}
         />
 
         <button style={{ display: "block" }}>submit</button>
@@ -427,6 +432,7 @@ const LoginForm = () => {
           id="rememberMe"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          defaultChecked={formik.values.rememberMe}
         />
 
         <button style={{ display: "block" }}>submit</button>
@@ -508,6 +514,7 @@ const LoginForm = () => {
           id="rememberMe"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          defaultChecked={formik.values.rememberMe}
         />
 
         <button style={{ display: "block" }}>submit</button>
@@ -603,6 +610,7 @@ const LoginForm = () => {
           type="checkbox"
           name="rememberMe"
           id="rememberMe"
+          defaultChecked={formik.values.rememberMe}
           {...formik.getFieldProps("rememberMe")}
         />
 
