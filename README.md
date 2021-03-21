@@ -1,4 +1,5 @@
 # Table of Contents <!-- omit in toc -->
+
 - [What is Formik?](#what-is-formik)
 - [Installation](#installation)
 - [Create Login Form](#create-login-form)
@@ -40,6 +41,9 @@ Creating a Login Form with:
 ```jsx
 import React from "react";
 
+/**
+ * LoginForm Component
+ */
 const LoginForm = () => {
   return (
     <form>
@@ -57,7 +61,7 @@ const LoginForm = () => {
         <label htmlFor="rememberMe" style={{ display: "block" }}>
           remember me
         </label>
-        <input type="checkbox" name="rememberMe" id="rememberMe" />
+        <input type="checkbox" id="rememberMe" />
 
         <button style={{ display: "block" }}>submit</button>
       </div>
