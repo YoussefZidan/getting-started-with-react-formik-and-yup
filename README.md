@@ -794,7 +794,7 @@ import FormikErrorMessage from "./FormikErrorMessage";
 /**
  * FormikField Component
  */
-const FormikField = ({ name, type, label, defaultChecked }) => {
+const FormikField = ({ name, type, label }) => {
   return (
     <Field name={name}>
       {(formikField) => {
