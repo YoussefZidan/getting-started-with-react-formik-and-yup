@@ -765,8 +765,8 @@ So, it's a good chance to create a Reusable Component that includes all of that.
 FormikErrorMessage.jsx
 
 ```jsx
-import { ErrorMessage } from "formik";
 import React from "react";
+import { ErrorMessage } from "formik";
 
 /**
  * FormikErrorMessage Component
@@ -787,8 +787,8 @@ export default FormikErrorMessage;
 FormikField.jsx
 
 ```jsx
-import { Field } from "formik";
 import React from "react";
+import { Field } from "formik";
 import FormikErrorMessage from "./FormikErrorMessage";
 
 /**
