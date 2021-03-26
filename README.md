@@ -627,7 +627,7 @@ export default LoginForm;
 
 # Formik Components
 
-Formik provides a few Components to be used that will save us more time, reduce code duplication, and make the code more consistant and organized.
+Formik provides a few Components to be used that will save us more time, reduce code duplication, and make the code more consistent and organized.
 
 ## Login Form With Formik Components
 
@@ -635,7 +635,7 @@ Formik provides a few Components to be used that will save us more time, reduce 
 - Wrap and return the entire form inside `<Formik>` Component with `formik` as a parameter.
 - Add `initialValues`, `onSubmit` and `validationSchema` as **Props** to `<Formik>` Component.
 - Replace the native `<form>` element with `<Form>` Component.
-- Wrap and return the `label`, `input` and the `validation div message` inside `<Field>` with `formikField` as a parameter.
+- Wrap and return the `label`, `input`, and the `validation div message` inside `<Field>` with `formikField` as a parameter.
 - Add the `name` attribute to the `<Field>` component instead of the `<input>` element.
 - spread `{...formikField.field}` inside the `<input>` element.
 - Wrap and return the `validation div` inside `<ErrorMessage>` component with `ErrMessage` as a parameter and add the `name` attribute to it.
