@@ -1,5 +1,6 @@
-# Table of Contents <!-- omit in toc -->
+# Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [What is Formik?](#what-is-formik)
 - [Installation](#installation)
 - [Formik Hook](#formik-hook)
@@ -12,6 +13,7 @@
   - [Code Refactor](#code-refactor)
 - [Formik Components](#formik-components)
   - [Login Form With Formik Components](#login-form-with-formik-components)
+  - [Formik Reusable Components](#formik-reusable-components)
 
 # What is Formik?
 
@@ -81,7 +83,7 @@ export default LoginForm;
   - For checkboxes add `defaultChecked={formik.values[name]}` for initial value.
 - Add `formik.handleChange` to `onChange` attribute on each `input` element.
 - Print the `formik` object inside `<pre>` tag.
-- Fill all `input` elements and see the changes on `formik` object.
+- Fill in all `input` elements and see the changes on `formik` object.
 
 ```jsx
 import React from "react";
@@ -291,7 +293,7 @@ export default LoginForm;
 
 ## Displaying Error Messages
 
-- Create a `<div>` tag and check for `formik.errors[name]` to display the error message beneathe each element that has a validation.
+- Create a `<div>` tag and check for `formik.errors[name]` to display the error message beneath each element that has a validation.
 
 ```jsx
 import React from "react";
@@ -634,7 +636,7 @@ Formik provides a few Components to be used that will save us more time, reduce 
 - Import `Formik`, `Form`, `Field` and `ErrorMessage` from `formik`.
 - Wrap and return the entire form inside `<Formik>` Component with `formik` as a parameter.
 - Add `initialValues`, `onSubmit` and `validationSchema` as **Props** to `<Formik>` Component.
-- Replace the native `<form>` element with `<Form>` Component.
+- Replace the native `<form>` element with the `<Form>` Component.
 - Wrap and return the `label`, `input`, and the `validation div message` inside `<Field>` with `formikField` as a parameter.
 - Add the `name` attribute to the `<Field>` component instead of the `<input>` element.
 - spread `{...formikField.field}` inside the `<input>` element.
@@ -738,6 +740,132 @@ const LoginFormikComponents = () => {
                   );
                 }}
               </Field>
+              <button style={{ display: "block" }}>submit</button>
+            </div>
+            <pre>{JSON.stringify(formik, null, 4)}</pre>
+          </Form>
+        );
+      }}
+    </Formik>
+  );
+};
+export default LoginFormikComponents;
+```
+
+## Formik Reusable Components
+
+As we can see inside each `<Field>` component there are
+
+- `<label>`
+- `<input>`
+- `<ErrorMessage>`
+
+So, it's a good chance to create a Reusable Component that includes all of that.
+
+FormikErrorMessage.jsx
+
+```jsx
+import { ErrorMessage } from "formik";
+import React from "react";
+
+/**
+ * FormikErrorMessage Component
+ */
+const FormikErrorMessage = ({ name }) => {
+  return (
+    <ErrorMessage name={name}>
+      {(errMessage) => {
+        return <div style={{ color: "red" }}>{errMessage}</div>;
+      }}
+    </ErrorMessage>
+  );
+};
+
+export default FormikErrorMessage;
+```
+
+FormikField.jsx
+
+```jsx
+import { Field } from "formik";
+import React from "react";
+import FormikErrorMessage from "./FormikErrorMessage";
+
+/**
+ * FormikField Component
+ */
+const FormikField = ({ name, type, label, defaultChecked }) => {
+  return (
+    <Field name={name}>
+      {(formikField) => {
+        return (
+          <>
+            <label htmlFor={name} style={{ display: "block" }}>
+              {label}
+            </label>
+            <input
+              type={type}
+              id={name}
+              {...formikField.field}
+              defaultChecked={formikField.field.value}
+            />
+            <FormikErrorMessage name={name} />
+            <pre>{JSON.stringify(formikField, null, 4)}</pre>
+          </>
+        );
+      }}
+    </Field>
+  );
+};
+
+export default FormikField;
+```
+
+And here is the final code after using the reusable components.
+
+LoginFormikComponentsShared.jsx
+
+```jsx
+import React from "react";
+import { Formik, Form } from "formik";
+import * as yup from "yup";
+import FormikField from "./shared/FormikField";
+
+/**
+ * LoginFormikComponents Component
+ */
+const LoginFormikComponents = () => {
+  const initialValues = {
+    email: "",
+    password: "",
+    rememberMe: false,
+  };
+  const onSubmit = (values) => console.log(JSON.stringify(values, null, 4));
+  const validationSchema = yup.object({
+    email: yup
+      .string()
+      .email("Please enter a valid email address")
+      .required("Email field is required"),
+    password: yup.string().required("Password field is required"),
+  });
+
+  return (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
+      {(formik) => {
+        return (
+          <Form>
+            <div style={{ padding: 20 }}>
+              <FormikField label="Email" name="email" type="email" />
+              <FormikField label="Password" name="password" type="password" />
+              <FormikField
+                label="Remember Me"
+                name="rememberMe"
+                type="checkbox"
+              />
               <button style={{ display: "block" }}>submit</button>
             </div>
             <pre>{JSON.stringify(formik, null, 4)}</pre>
