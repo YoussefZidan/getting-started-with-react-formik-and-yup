@@ -1,7 +1,9 @@
-import LoginForm from "./components/login";
+import Login from "./components/login";
+import LoginFormikComponents from "./components/LoginFormikComponents";
 
 function App() {
-  return <LoginForm />;
+  // return <Login />;
+  return <LoginFormikComponents />;
 }
 
 export default App;
