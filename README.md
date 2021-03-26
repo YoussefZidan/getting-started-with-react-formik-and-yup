@@ -1,6 +1,6 @@
-# Table of Contents
+<!-- omit in toc -->
+# Table of Contents 
 
-- [Table of Contents](#table-of-contents)
 - [What is Formik?](#what-is-formik)
 - [Installation](#installation)
 - [Formik Hook](#formik-hook)
